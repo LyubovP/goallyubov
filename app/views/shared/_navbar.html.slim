@@ -1,0 +1,33 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container-fluid
+    - if user_signed_in?
+      = link_to "GOAL", organizations_path, class: "navbar-brand"
+    - else
+      = link_to "GOAL", root_path, class: "navbar-brand"
+    button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button" 
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.ms-auto
+        - if user_signed_in?
+          li.nav-item
+           li.nav-item.dropdown
+             a#navbarDropdown.nav-link.dropdown-toggle.d-flex.justify-content-end aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button"
+               .avatar-navbar
+                 - if current_user.avatar.attached?
+                   = image_tag current_user.avatar, class: "rounded-circle"
+                 - else
+                   = image_tag  url_for(@user.avatar), class: "rounded-circle"
+             ul.dropdown-menu aria-labelledby="navbarDropdown" 
+               li
+                 = link_to "Edit profile", edit_user_registration_path, class: "dropdown-item"
+               li
+                 = link_to "View organization", organizations_path, class: "dropdown-item"
+               li
+                 hr.dropdown-divider/
+               li
+                 = link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item"
+        - else
+          li.nav-item
+            = link_to "Register", new_user_registration_path, class: "nav-link active"
+          li.nav-item
+            = link_to "Sign in", new_user_session_path, class: "nav-link active"
