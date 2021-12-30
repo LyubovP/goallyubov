@@ -21,7 +21,7 @@ gem 'omniauth-google-oauth2'
 gem "font-awesome-sass", "~> 5.15.1"
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem "aws-sdk-s3", require: false
-gem 'react-rails'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -43,7 +43,6 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
   gem 'annotate'
-  gem 'any_login'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,4 +1,4 @@
-.device_wrapper.d-flex.justify-content-center.align-items-center.mt-5
+.container.device_wrapper.d-flex.justify-content-center.align-items-center.mt-5
   .box_sign-up
     h2 Sign up
 
@@ -26,6 +26,6 @@
                     input_html: { autocomplete: "new-password" }
 
       .form-actions
-        = f.button :submit, "Sign up"
+        = f.button :submit, "Sign up", class: "btn btn-primary"
 
     = render "devise/shared/links"

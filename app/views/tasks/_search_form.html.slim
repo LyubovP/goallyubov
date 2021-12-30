@@ -1,0 +1,57 @@
+.container.text-center
+  = search_form_for @q do |f|
+    = f.search_field :title_cont, placeholder: "Search..."
+    = f.submit "Search!"
+    .container.text-center
+      - if current_user.tasks.present?
+        .row
+          .col-sm-6
+            table.table.table-bordered.table-striped
+              thead.table-warning
+                tr
+                  h5.text-center Active Tasks
+                tr
+                  th 
+                  th 
+                    = sort_link(@q, :title, "Title")
+                  th Completed
+                  th Actions
+              tbody
+                - @tasks.each do |task|
+                  - if task.completion_status == "active"
+                    tr
+                      td
+                        = check_box_tag "task_id[]", task.id
+                      td
+                        strong
+                          = link_to "#{task.title}", task_path(task.id)
+                      td
+                        = task.completion_status
+                      td
+                        = link_to icon('fas', 'pen-square'), edit_task_path(task.id), class: 'mx-1'
+                        = link_to icon('fas', 'trash-alt'), task_path(task.id),  method: :delete, data: { confirm: "Are you sure?" }
+          .col-sm-6
+            table.table.table-bordered
+              thead.table-success
+                tr
+                h5.text-center Completed Tasks
+                tr
+                  th Checkbox
+                  th Title
+                  th Completed
+                  th Actions
+              tbody    
+                - @tasks.each do |task|
+                  - if task.completion_status == "completed"
+                    tr
+                      td
+                        = check_box_tag "task_id[]", task.id
+                      td
+                        strong
+                          = link_to "#{task.title}", task_path(task.id)
+                      td
+                        = task.completion_status
+                      td
+                        = link_to icon('fas', 'pen-square'), edit_task_path(task.id), class: 'mx-1'
+                        = link_to icon('fas', 'trash-alt'), task_path(task.id),  method: :delete, data: { confirm: "Are you sure?" }
+                        
