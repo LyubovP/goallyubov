@@ -39,7 +39,6 @@
 yarn-debug.log*
 .yarn-integrity
 .env
-*.html.erb.bak
 /coverage
 /config/credentials/development.key
 
