@@ -1,0 +1,29 @@
+.container.tasks_wrapp.my-5
+  .card.bg-light.shadow.p-3.mb-5.rounded.fs-5
+    .row
+      .col
+        h2.text-center
+          = @task.title
+    .row.my-1
+      .col-sm-2
+        |  Due date
+      .col-sm-10
+          =@task.due_date
+    .row.my-1
+      .col-sm-2
+        |  Priority
+      .col-sm-10.d-flex.align-items-center
+          = @task.priority
+    .row.my-1
+      .col-sm-2
+        |  Status
+      .col-sm-10.d-flex.align-items-center
+          = @task.completion_status
+    .row.my-1
+      .col-sm-2
+        |  Description
+      .col-sm-10
+        = @task.description
+  .border-bottom.pb-2
+    = link_to "Back", root_path, class: "btn btn-outline-light"
+    
