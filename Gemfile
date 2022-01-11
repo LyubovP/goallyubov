@@ -22,6 +22,7 @@ gem "font-awesome-sass", "~> 5.15.1"
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem "aws-sdk-s3", require: false
 gem 'ransack'
+gem 'react-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
